@@ -108,7 +108,7 @@ DeviceClient.prototype.callAction = function(serviceId, actionName, params, call
 
     Object.keys(params).forEach(function(paramName) {
       var tmp = et.SubElement(action, paramName);
-      var value = params[paramName];
+      var value = params[paramName] || null;
       //console.log(paramName, value, typeof value === 'object', value.constructor, value.constructor.name === 'Element');
       if(typeof value === 'object' && value.constructor && value.constructor.name === 'Element'){
         return tmp.append(value);
