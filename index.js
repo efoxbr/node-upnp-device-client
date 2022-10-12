@@ -141,7 +141,7 @@ DeviceClient.prototype.callAction = function(serviceId, actionName, params, call
       res.pipe(concat(function(buf) {
         var doc = et.parse(cleanString(buf.toString()));
 
-        if(!doc) { // Cannot read property 'findtext' of null
+        if(!doc || !doc._root) { // Cannot read property 'findtext' of null
           var err = new Error('Empty or invalid response');
           err.code = 'EUPNP';
           err.statusCode = 500;
